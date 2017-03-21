@@ -8,7 +8,7 @@ var aqiSourceData = {
   }
 };
 */
-
+var currStage = '天'; //默认是天
 // 以下两个函数用于随机模拟生成测试数据
 function getDateStr(dat) {
 	var y = dat.getFullYear();
@@ -62,9 +62,12 @@ function renderChart() {
 /**
  * 日、周、月的radio事件点击时的处理函数
  */
-function graTimeChange() {
+function graTimeChange(selectStage) {
 	// 确定是否选项发生了变化 
+
+	selectStage = selectStage == 0 ? '天' : (selectStage == 1 ? '周' : '月');
 	
+
 	// 设置对应数据
 
 	// 调用图表渲染函数
@@ -86,13 +89,12 @@ function citySelectChange() {
  */
 function initGraTimeForm() {
 	var timeRadio = document.getElementsByName('gra-time');
-	console.log(timeRadio.length);
-	for(var i = 0; i < timeRadio.length; i++) {
-		timeRadio[i].addEventListener('click', graTimeChange, false);
-		timeRadio[i].onclick=function(){
-			alert(timeRadio[i].type);
-		}
-	}
+		var selectStage = 0;
+		timeRadio[0].addEventListener('click', function(){graTimeChange(0)}, false);
+		timeRadio[1].addEventListener('click', function(){graTimeChange(1)}, false);
+		timeRadio[2].addEventListener('click', function(){graTimeChange(2)}, false);
+
+
 
 }
 
@@ -124,6 +126,8 @@ function init() {
 	initGraTimeForm()
 	initCitySelector();
 	initAqiChartData();
+
+	
 }
 
 init();
