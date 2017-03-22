@@ -1,4 +1,4 @@
-/* 数据格式演示
+﻿/* 数据格式演示
 var aqiSourceData = {
   "北京": {
     "2016-01-01": 10,
@@ -64,7 +64,7 @@ function renderChart() {
  */
 function graTimeChange(event) {
 	var type=event.target.defaultValue;
-	
+	console.log(type);
 	// 确定是否选项发生了变化 
 	//selectStage = selectStage == 0 ? '天' : (selectStage == 1 ? '周' : '月');
 	
@@ -91,7 +91,7 @@ function citySelectChange() {
 function initGraTimeForm() {
 	var timeRadio = document.getElementsByName('gra-time');
   for (var i=0;i<timeRadio.length;i++) {
-  		var val=timeRadio[i].value;
+  		//var val=timeRadio[i].value;
   		timeRadio[i].onclick=graTimeChange;
   }
 
