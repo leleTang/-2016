@@ -1,20 +1,38 @@
-#aqi-chart-wrap {
-    /*display: -webkit-flex;
-    display: flex;
-    -webkit-align-items: flex-end;
-    align-items: flex-end;
-    -webkit-justify-content: space-around;
-    justify-content: space-around;
-    position: relative;
-    bottom: 0;
-    height: 550px;
-    width: 88%;
-    padding: 0 30px;
-    margin: 10px auto;
-    border-radius: 10px;
-    border: 1px solid #0B2C65;*/
+#form-gra-time{
+	width: 86%;
+	margin: 10px auto;
 }
 #aqi-chart-wrap{
+	position: relative;
+	overflow: hidden;
 	display: flex;
 	align-items:flex-end;
+	 -webkit-justify-content: space-around;
+    justify-content: space-around;
+	height: 550px;
+    width: 88%;
+	margin: 10px auto;
+    border-radius: 10px;
+    border: 1px solid #0B2C65;
+}
+#aqi-chart-wrap div{
+	flex: 1;
+	animation: move_In 1s;
+	position: relative;
+	display: inline-block;
+	bottom: 0;
+	flex-direction: row;
+	background-color: red;
+	flex-wrap: wrap;
+	cursor: pointer;
+	box-shadow: 1px 1px 1px #999;
+	margin: 1px;
+}
+@keyframes move_In {
+	0% {
+		bottom: -100%;
+	}
+	100% {
+		bottom: 0;
+	}
 }

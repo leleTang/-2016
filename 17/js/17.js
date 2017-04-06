@@ -57,11 +57,13 @@ var pageState = {
  */
 function renderChart() {
 	var aqiChartWrap = document.getElementById("aqi-chart-wrap");
-	aqiChartWrap.innerHTML="";
+	aqiChartWrap.innerHTML = "";
 	for(var key in chartData) {
+		color = '#' + Math.floor(Math.random() * 0xFFFFFF).toString(16);
 		var rectangleDiv = document.createElement("div");
-		rectangleDiv.style.cssText = "width:10px;float: left;background: red;";
-				rectangleDiv.style.height = (chartData[key]) + "px";
+		rectangleDiv.style.background = color;
+		rectangleDiv.style.height = (chartData[key]) + "px";
+		rectangleDiv.setAttribute("title", "" + chartData[key]);
 		aqiChartWrap.appendChild(rectangleDiv);
 	}
 
@@ -142,17 +144,79 @@ function initAqiChartData() {
 	// 将原始的源数据处理成图表需要的数据格式
 	var buffer = aqiSourceData[pageState.nowSelectCity];
 	var divHeight = "";
+
 	switch(pageState.nowGraTime) {
 		case 'day':
-			divHeight = aqiSourceData[pageState.nowSelectCity];
+			chartData = {};
+			divHeight = buffer;
+			chartData = divHeight;
 			break;
 		case 'week':
+			chartData = {};
+			sum = 0;
+			i = 0;
+			var week = 0;
+			for(item in buffer) {
+				sum += buffer[item];
+				i++;
+				if(new Date(item).getDay() == 6) { //判断是否是周日
+					week++;
+					chartData['2016年第' + week + '周'] = parseInt(sum / i);
+					i = 0;
+					sum = 0;
+				}
+			}
+			if(i != 0) {
+				week++;
+				chartData['2016年第' + week + '周'] = parseInt(sum / i);
+			}
 			break;
 		case 'month':
+			chartData = {};
+			//			var countSum = 0;
+			//			var daySum = 0;
+			//			for(var key in buffer) {
+			//				var monthKey = key.substring(5, 7);
+			//				switch(monthKey) {
+			//					case "01":
+			//						countSum += buffer[key];
+			//						daySum++;
+			//						chartData[0] = Math.floor(countSum / daySum);
+			//					case "02":
+			//						countSum += buffer[key];
+			//						daySum++;
+			//						chartData[1] = Math.floor(countSum / daySum);
+			//					case "03":
+			//						countSum += buffer[key];
+			//						daySum++;
+			//						chartData[2] = Math.floor(countSum / daySum);
+			//
+			//				}
+			//			}
+			sum = 0;
+			i = 0;
+			var mouth = 1;
+			for(item in buffer) {
+				var date = new Date(item);
+				if(date.getMonth() != mouth) {
+					mouth = date.getMonth();
+
+					if(sum != 0)
+						chartData[date.getFullYear() + '-' + (mouth ? ('0' + mouth) : mouth)] = parseInt(sum / i);
+					sum = 0;
+					i = 0;
+				}
+				sum += buffer[item];
+				i++;
+			}
+			if(i != 0) {
+				mouth++;
+				chartData[date.getFullYear() + '-' + (mouth ? ('0' + mouth) : mouth)] = parseInt(sum / i);
+			}
 			break;
 	}
 	// 处理好的数据存到 chartData 中
-	chartData = divHeight;
+
 }
 
 /**
