@@ -48,7 +48,7 @@ var chartData = {};
 
 // 记录当前页面的表单选项
 var pageState = {
-	nowSelectCity: -1,
+	nowSelectCity: "北京",
 	nowGraTime: "day"
 }
 
@@ -56,7 +56,14 @@ var pageState = {
  * 渲染图表
  */
 function renderChart() {
-	var aqiChartWrap = document.getElementsByClassName("aqi-chart-wrap");
+	var aqiChartWrap = document.getElementById("aqi-chart-wrap");
+	aqiChartWrap.innerHTML="";
+	for(var key in chartData) {
+		var rectangleDiv = document.createElement("div");
+		rectangleDiv.style.cssText = "width:10px;float: left;background: red;";
+				rectangleDiv.style.height = (chartData[key]) + "px";
+		aqiChartWrap.appendChild(rectangleDiv);
+	}
 
 }
 
@@ -93,9 +100,10 @@ function citySelectChange(event) {
 	var selectValue = event.target.value;
 	// 设置对应数据
 	if(selectValue != pageState.nowSelectCity) {
-		initAqiChartData();
-		selectValue = pageState.nowSelectCity
+
+		pageState.nowSelectCity = selectValue;
 	}
+	initAqiChartData();
 	// 调用图表渲染函数
 	renderChart();
 }
@@ -132,8 +140,19 @@ function initCitySelector() {
  */
 function initAqiChartData() {
 	// 将原始的源数据处理成图表需要的数据格式
-	
+	var buffer = aqiSourceData[pageState.nowSelectCity];
+	var divHeight = "";
+	switch(pageState.nowGraTime) {
+		case 'day':
+			divHeight = aqiSourceData[pageState.nowSelectCity];
+			break;
+		case 'week':
+			break;
+		case 'month':
+			break;
+	}
 	// 处理好的数据存到 chartData 中
+	chartData = divHeight;
 }
 
 /**
@@ -143,6 +162,7 @@ function init() {
 	initGraTimeForm()
 	initCitySelector();
 	initAqiChartData();
+	renderChart();
 }
 
 init();
