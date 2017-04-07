@@ -63,7 +63,8 @@ function renderChart() {
 		var rectangleDiv = document.createElement("div");
 		rectangleDiv.style.background = color;
 		rectangleDiv.style.height = (chartData[key]) + "px";
-		rectangleDiv.setAttribute("title", "" + chartData[key]);
+		var titleData = "" + key + ":" + chartData[key] + "粒度";
+		rectangleDiv.setAttribute("title", "" + titleData);
 		aqiChartWrap.appendChild(rectangleDiv);
 	}
 
@@ -143,13 +144,11 @@ function initCitySelector() {
 function initAqiChartData() {
 	// 将原始的源数据处理成图表需要的数据格式
 	var buffer = aqiSourceData[pageState.nowSelectCity];
-	var divHeight = "";
 
 	switch(pageState.nowGraTime) {
 		case 'day':
 			chartData = {};
-			divHeight = buffer;
-			chartData = divHeight;
+			chartData = buffer;
 			break;
 		case 'week':
 			chartData = {};
@@ -173,26 +172,6 @@ function initAqiChartData() {
 			break;
 		case 'month':
 			chartData = {};
-			//			var countSum = 0;
-			//			var daySum = 0;
-			//			for(var key in buffer) {
-			//				var monthKey = key.substring(5, 7);
-			//				switch(monthKey) {
-			//					case "01":
-			//						countSum += buffer[key];
-			//						daySum++;
-			//						chartData[0] = Math.floor(countSum / daySum);
-			//					case "02":
-			//						countSum += buffer[key];
-			//						daySum++;
-			//						chartData[1] = Math.floor(countSum / daySum);
-			//					case "03":
-			//						countSum += buffer[key];
-			//						daySum++;
-			//						chartData[2] = Math.floor(countSum / daySum);
-			//
-			//				}
-			//			}
 			sum = 0;
 			i = 0;
 			var mouth = 1;
@@ -200,7 +179,6 @@ function initAqiChartData() {
 				var date = new Date(item);
 				if(date.getMonth() != mouth) {
 					mouth = date.getMonth();
-
 					if(sum != 0)
 						chartData[date.getFullYear() + '-' + (mouth ? ('0' + mouth) : mouth)] = parseInt(sum / i);
 					sum = 0;
