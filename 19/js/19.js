@@ -111,6 +111,7 @@ function sort(){
 	var contentChildNode=contentFrame.childNodes;
 	for (var i=0 ;i<contentChildNode.length;i++) {
 		console.log(contentChildNode[i].innerHTML);
+		
 	}
 }
 //全局变量
