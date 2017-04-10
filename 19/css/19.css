@@ -1,0 +1,10 @@
+.content-frame{
+	margin-top: 10px;
+}
+.content-frame div{
+	color: #fff;
+	background-color: red;
+	padding: 5px 12px;
+	float: left;
+	margin-left: 10px;
+}
