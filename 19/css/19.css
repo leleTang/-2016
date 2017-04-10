@@ -1,14 +1,16 @@
 .content-frame{
-	margin-top: 10px;
+	margin-top: 20px;
 	display: flex;
 	align-items: flex-end;
-	
+	height: 120px;
 }
 .content-frame div{
+	flex: 1;
 	color: #fff;
 	background-color: red;
 	padding: 5px 12px;
 	float: left;
 	margin-left: 10px;
 	width: 10px;
+	font-size: 10px;
 }
