@@ -30,9 +30,8 @@ function leftInto() {
 	var contentFirstChild = contentFrame.firstChild;
 	if(operationInputValue == "") {
 		alert("要输入数据哦~");
-	}
-	if(reg.test(operationInputValue)==false) {
-		alert("请输入数字~")
+	} else if(reg.test(operationInputValue) == false) {
+		alert("请输入数字~");
 	} else {
 		var contentDiv = document.createElement("div");
 		contentDiv.innerHTML = operationInputValue;
@@ -46,9 +45,8 @@ function rightInto() {
 	var contentFirstChild = contentFrame.lastChild;
 	if(operationInputValue == "") {
 		alert("要输入数据哦~");
-	}
-	if(reg.test(operationInputValue)==false) {
-		alert("请输入数字~")
+	} else if(reg.test(operationInputValue) == false) {
+		alert("请输入数字~");
 	} else {
 		var contentDiv = document.createElement("div");
 		contentDiv.innerHTML = operationInputValue;
