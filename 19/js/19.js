@@ -111,18 +111,17 @@ function sort() {
 	for(var oldDivHeight = 0; oldDivHeight < contentChildNode.length; oldDivHeight++) {
 		contentDivHeight[oldDivHeight] = contentChildNode[oldDivHeight].innerHTML;
 	}
+	//	冒泡排序
 	for(var i = 0; i < contentDivHeight.length; i++) {
 		for(var j = 0; j < contentDivHeight.length; j++) {
-			if(contentDivHeight[i] <contentDivHeight[j]) {
+			if(parseInt(contentDivHeight[i]) < parseInt(contentDivHeight[j])) {
 				var temp = contentDivHeight[i];
 				contentDivHeight[i] = contentDivHeight[j];
 				contentDivHeight[j] = temp;
 			}
+			contentChildNode[j].innerHTML = contentDivHeight[j];
+			contentChildNode[j].style.height = contentDivHeight[j] + "px";
 		}
-	}
-	for(var divHeight = 0; divHeight < contentChildNode.length; divHeight++) {
-		contentChildNode[divHeight].innerHTML = contentDivHeight[divHeight];
-		contentChildNode[divHeight].style.height = contentDivHeight[divHeight] + "px";
 	}
 }
 //全局变量
