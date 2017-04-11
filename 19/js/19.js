@@ -23,6 +23,8 @@ function operarion() {
 					break;
 				case "sort":
 					sort();
+					//					action = setInterval("draw()", 10);
+					//					clearInterval(draw);
 					break;
 			}
 		}
@@ -102,10 +104,10 @@ function numbers() {
 	}
 
 }
-
-//排序
+//https://github.com/IFE-ITStudio/IFE-ITStudio.github.io/blob/master/Task2_7/task.js
+//冒泡排序
 function sort() {
-	var contentDivHeight = [];
+
 	var contentChildNode = contentFrame.childNodes;
 	//	先取出div里的值
 	for(var oldDivHeight = 0; oldDivHeight < contentChildNode.length; oldDivHeight++) {
@@ -119,12 +121,24 @@ function sort() {
 				contentDivHeight[i] = contentDivHeight[j];
 				contentDivHeight[j] = temp;
 			}
-			contentChildNode[j].innerHTML = contentDivHeight[j];
-			contentChildNode[j].style.height = contentDivHeight[j] + "px";
 		}
 	}
+	return contentDivHeight;
 }
+
+//function draw() {
+//	var contentChildNode = contentFrame.childNodes;
+//	for(var i = 0; i < contentChildNode.length; i++) {
+//		console.log(contentDivHeight[i]);
+//		if(contentChildNode[i]>contentDivHeight[i]) {
+//			contentChildNode[i].style.height = contentDivHeight[i] + "px";
+//			contentChildNode[i].innerHTML = contentDivHeight[i];
+//		}
+//	}
+//
+//}
 //全局变量
+var contentDivHeight = [];
 var contentFrame = document.getElementsByClassName("content-frame")[0];
 var reg = new RegExp("^[0-9]*$");
 //初始化函数
