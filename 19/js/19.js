@@ -23,6 +23,7 @@ function operarion() {
 					break;
 				case "sort":
 					sort();
+					draw();
 					//					action = setInterval("draw()", 10);
 					//					clearInterval(draw);
 					break;
@@ -126,17 +127,17 @@ function sort() {
 	return contentDivHeight;
 }
 
-//function draw() {
-//	var contentChildNode = contentFrame.childNodes;
-//	for(var i = 0; i < contentChildNode.length; i++) {
-//		console.log(contentDivHeight[i]);
-//		if(contentChildNode[i]>contentDivHeight[i]) {
-//			contentChildNode[i].style.height = contentDivHeight[i] + "px";
-//			contentChildNode[i].innerHTML = contentDivHeight[i];
-//		}
-//	}
-//
-//}
+function draw() {
+	var contentChildNode = contentFrame.childNodes;
+	for(var i = 0; i < contentChildNode.length; i++) {
+		console.log(contentDivHeight[i]);
+		if(contentChildNode[i]>contentDivHeight[i]) {
+			contentChildNode[i].style.height = contentDivHeight[i] + "px";
+			contentChildNode[i].innerHTML = contentDivHeight[i];
+		}
+	}
+
+}
 //全局变量
 var contentDivHeight = [];
 var contentFrame = document.getElementsByClassName("content-frame")[0];
