@@ -22,8 +22,10 @@ function operarion() {
 					numbers();
 					break;
 				case "sort":
-					//					sort();
-					sortlist();
+					sort();
+					draw();
+					//					action = setInterval("draw()", 10);
+					//					clearInterval(draw);
 					break;
 			}
 		}
@@ -104,63 +106,37 @@ function numbers() {
 
 }
 //https://github.com/IFE-ITStudio/IFE-ITStudio.github.io/blob/master/Task2_7/task.js
-////冒泡排序
-//function sort() {
-//
-//	var contentChildNode = contentFrame.childNodes;
-//	var temp;
-//	//	先取出div里的值
-//	//	for(var oldDivHeight = 0; oldDivHeight < contentChildNode.length; oldDivHeight++) {
-//	//		contentDivHeight[oldDivHeight] = contentChildNode[oldDivHeight].innerHTML;
-//	//	}
-//	action = setInterval(draw, 15);
-//
-//	function draw() {
-//		for(var i = 0; i < contentChildNode.length; i++) {
-//			for(var j = 0; j < contentChildNode.length; j++) {
-//				if(parseInt(contentChildNode[i].innerHTML) <parseInt(contentChildNode[j].innerHTML)) {
-//					temp = contentChildNode[i].innerHTML;
-//					contentChildNode[i].innerHTML = contentChildNode[j].innerHTML;
-//					contentChildNode[i].style.height = contentChildNode[j].innerHTML + "px";
-//					contentChildNode[j].innerHTML = temp;
-//					contentChildNode[j].style.height = temp + "px";
-//				}
-//			}
-//
-//		}
-//		clearInterval(draw);
-//					return;
-//	}
-//}
-//排序
-function sortlist() {
-	var contentChildNode = contentFrame.childNodes;
-	var i = 0;
-	var j = 1;
-	var len = contentChildNode.length;
-	var timer = null;
-	timer = setInterval(draw, 10);
+//冒泡排序
+function sort() {
 
-	function draw() {
-		if(i < len) {
-			if(j < len) {
-				if(contentChildNode[i].offsetHeight > contentChildNode[j].offsetHeight) {
-					value = contentChildNode[i].innerHTML;
-					contentChildNode[i].innerHTML = contentChildNode[j].innerHTML;
-					contentChildNode[i].style.height = contentChildNode[j].innerHTML + "px";
-					contentChildNode[j].innerHTML = value;
-					contentChildNode[j].style.height = value + "px";
-				}
-				j++;
-			} else {
-				i++;
-				j = i + 1;
+	var contentChildNode = contentFrame.childNodes;
+	//	先取出div里的值
+	for(var oldDivHeight = 0; oldDivHeight < contentChildNode.length; oldDivHeight++) {
+		contentDivHeight[oldDivHeight] = contentChildNode[oldDivHeight].innerHTML;
+	}
+	//	冒泡排序
+	for(var i = 0; i < contentDivHeight.length; i++) {
+		for(var j = 0; j < contentDivHeight.length; j++) {
+			if(parseInt(contentDivHeight[i]) < parseInt(contentDivHeight[j])) {
+				var temp = contentDivHeight[i];
+				contentDivHeight[i] = contentDivHeight[j];
+				contentDivHeight[j] = temp;
 			}
-		} else {
-			clearInterval(timer);
-			return;
 		}
 	}
+	return contentDivHeight;
+}
+
+function draw() {
+	var contentChildNode = contentFrame.childNodes;
+	for(var i = 0; i < contentChildNode.length; i++) {
+		console.log(contentDivHeight[i]);
+		if(contentChildNode[i]>contentDivHeight[i]) {
+			contentChildNode[i].style.height = contentDivHeight[i] + "px";
+			contentChildNode[i].innerHTML = contentDivHeight[i];
+		}
+	}
+
 }
 //全局变量
 var contentDivHeight = [];
