@@ -47,7 +47,6 @@ function leftInto() {
 		var contentDiv = document.createElement("div");
 		contentDiv.style.height = operationInputValue + "px";
 		contentDiv.innerHTML = operationInputValue;
-		contentDiv.setAttribute("value", operationInputValue);
 		contentFrame.insertBefore(contentDiv, contentFirstChild);
 	}
 }
@@ -68,7 +67,6 @@ function rightInto() {
 		var contentDiv = document.createElement("div");
 		contentDiv.style.height = operationInputValue + "px";
 		contentDiv.innerHTML = operationInputValue;
-		contentDiv.setAttribute("value", operationInputValue);
 		contentFrame.insertBefore(contentDiv, contentLastChild);
 	}
 }
@@ -100,41 +98,32 @@ function numbers() {
 		var contentDiv = document.createElement("div");
 		contentDiv.style.height = num + "px";
 		contentDiv.innerHTML = num;
-		contentDiv.setAttribute("value", num);
 		contentFrame.appendChild(contentDiv);
 	}
 
 }
-//冒泡排序参考
-//var arr = [3, 2, 4, 9, 1, 5, 7, 6, 8];
-//var arrSorted = bubbleSort(arr);
-//function bubbleSort(arr) {
-//  var i = arr.length, j;
-//  var tempExchangVal;
-//  while (i > 0) {
-//      for (j = 0; j < i - 1; j++) {
-//          if (arr[j] > arr[j + 1]) {
-//              tempExchangVal = arr[j];
-//              arr[j] = arr[j + 1];
-//              arr[j + 1] = tempExchangVal;
-//          }
-//      }
-//      i--;
-//  }
-//  return arr;
-//}
-// 
-//console.log(arrSorted);
-//alert(arrSorted);
+
 //排序
 function sort() {
 	var contentDivHeight = [];
 	var contentChildNode = contentFrame.childNodes;
 	//	先取出div里的值
-	for(var i = 0; i < contentChildNode.length; i++) {
-		contentDivHeight[i] = contentChildNode[i].innerHTML;
+	for(var oldDivHeight = 0; oldDivHeight < contentChildNode.length; oldDivHeight++) {
+		contentDivHeight[oldDivHeight] = contentChildNode[oldDivHeight].innerHTML;
 	}
-
+	for(var i = 0; i < contentDivHeight.length; i++) {
+		for(var j = 0; j < contentDivHeight.length; j++) {
+			if(contentDivHeight[i] <contentDivHeight[j]) {
+				var temp = contentDivHeight[i];
+				contentDivHeight[i] = contentDivHeight[j];
+				contentDivHeight[j] = temp;
+			}
+		}
+	}
+	for(var divHeight = 0; divHeight < contentChildNode.length; divHeight++) {
+		contentChildNode[divHeight].innerHTML = contentDivHeight[divHeight];
+		contentChildNode[divHeight].style.height = contentDivHeight[divHeight] + "px";
+	}
 }
 //全局变量
 var contentFrame = document.getElementsByClassName("content-frame")[0];
