@@ -22,7 +22,6 @@ function operarion() {
 					numbers();
 					break;
 				case "sort":
-					//					sort();
 					sortlist();
 					break;
 			}
