@@ -5,7 +5,19 @@ function operarion() {
 	for(var i = 0; i < operationButton.length; i++) {
 		operationButton[i].onclick = function() {
 			var operationButtonValue = this.value;
-			console.log(operationButtonValue);
+			switch(operationButtonValue){
+				case(leftInto):
+				
+				break;
+				case(rightInto):
+				break;
+				case(leftOut):
+				break;
+				case(rightOut): 
+				break;
+				case(search):
+				break;
+			}
 		}
 	}
 
