@@ -1,0 +1,27 @@
+.content-frame {
+	margin-top: 10px;
+}
+
+.content-frame div {
+	color: #fff;
+	background-color: red;
+	padding: 5px 12px;
+	float: left;
+	margin-left: 10px;
+}
+
+#operation-textarea {
+	width: 200px;
+	height: 200px;
+	resize: none;
+}
+
+.textSpan {
+	margin-left: 10px;
+	padding: 2px 5px;
+	background: radial-gradient(#00BCD4, #80DEEA);
+	color: #fff;
+}
+.selectThis{
+	color: #FF0000;
+}
