@@ -20,9 +20,9 @@ function operarion() {
 		var resultDivTagValue;
 		for(var i = 0; i < resultDivTag.length; i++) {
 			resultDivTagValue = resultDivTag[i].innerHTML; //每个标签里的值
-			var resuleSpan = "<span>" + selectInputValue + "</span>";
-			operationTextareaList[i] = resultDivTagValue.replace(selectInputValue, resuleSpan);
-			console.log(operationTextareaList[i])
+			var resuleSpan = "<span class='selectThis'>" + selectInputValue + "</span>";
+			operationTextareaList[i] = resultDivTagValue.replace(new RegExp(selectInputValue, "gm"), resuleSpan);
+			console.log(operationTextareaList[i]);
 		}
 		resultDiv.innerHTML = "";
 		for(var i = 0; i < operationTextareaList.length; i++) {
