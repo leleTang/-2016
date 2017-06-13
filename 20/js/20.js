@@ -17,16 +17,13 @@ function operarion() {
 	}
 	selectBtn.onclick = function() {
 		var selectInputValue = selectInput.value;
-		var resultDivTagValue;
-		for(var i = 0; i < resultDivTag.length; i++) {
-			resultDivTagValue = resultDivTag[i].innerHTML; //每个标签里的值
-			var resuleSpan = "<span class='selectThis'>" + selectInputValue + "</span>";
+		var resultDivTagLength = resultDivTag.length;
+		for(var i = 0; i < resultDivTagLength; i++) {
+			var resultDivTagValue = resultDivTag[i].innerHTML; //每个标签里的值
+			console.log(resultDivTag[i])
+			var resuleSpan = "<a class='selectThis'>" + selectInputValue + "</a>";
 			operationTextareaList[i] = resultDivTagValue.replace(new RegExp(selectInputValue, "gm"), resuleSpan);
-			console.log(operationTextareaList[i]);
-		}
-		resultDiv.innerHTML = "";
-		for(var i = 0; i < operationTextareaList.length; i++) {
-			resultDiv.innerHTML += "<span class='textSpan'>" + operationTextareaList[i] + "</span>";
+			resultDivTag[i].innerHTML = operationTextareaList[i];
 		}
 	}
 }
