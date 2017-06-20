@@ -1,0 +1,14 @@
+.tagDiv {}
+.tagSpan{
+	margin: 10px;
+	padding: 5px;
+	background: #0B2C65;
+	color: #FFFFFF;
+}
+#tagContent {}
+
+.interestDiv {}
+
+.interestTextarea {}
+
+.interestContent {}
